@@ -4,8 +4,6 @@
     <list default="true" id="18267563-f298-408a-9283-c5962460bebd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/first-contract/deploy.js" afterPath="$PROJECT_DIR$/first-contract/deploy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/first-contract/package.json" afterPath="$PROJECT_DIR$/first-contract/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/first-contract/test/Inbox.test.js" afterPath="$PROJECT_DIR$/first-contract/test/Inbox.test.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,8 +36,8 @@
       <file leaf-file-name="deploy.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/first-contract/deploy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="465">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,11 +81,11 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/first-contract/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="1084" />
-    <option name="y" value="-1200" />
-    <option name="width" value="1920" />
-    <option name="height" value="1200" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="-375" />
+    <option name="y" value="-1440" />
+    <option name="width" value="2560" />
+    <option name="height" value="1440" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -180,7 +178,7 @@
       <workItem from="1525687153525" duration="144000" />
       <workItem from="1525687317646" duration="222000" />
       <workItem from="1525687554692" duration="2676000" />
-      <workItem from="1525691156752" duration="3663000" />
+      <workItem from="1525691156752" duration="5332000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1525687176870</created>
@@ -210,17 +208,24 @@
       <option name="project" value="LOCAL" />
       <updated>1525694699514</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Changed the provider to Truffle hdwallet provider">
+      <created>1525698792191</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1525698792191</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6705000" />
+    <option name="totallyTimeSpent" value="8374000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1084" y="-1200" width="1920" height="1200" extended-state="6" />
+    <frame x="-375" y="-1440" width="2560" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -249,7 +254,8 @@
     <MESSAGE value="Wrote a simple compiler" />
     <MESSAGE value="Wrote some Mocha tests" />
     <MESSAGE value="deploy and send contract" />
-    <option name="LAST_COMMIT_MESSAGE" value="deploy and send contract" />
+    <MESSAGE value="Changed the provider to Truffle hdwallet provider" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the provider to Truffle hdwallet provider" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -311,8 +317,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/first-contract/deploy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="465">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
