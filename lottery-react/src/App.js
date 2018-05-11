@@ -3,6 +3,8 @@ import './App.css';
 import web3 from './web3';
 import lottery from './lottery';
 
+import PickWinner from './components/PickWinner'
+
 import ethereumLogo from './assets/images/ethereum-logo.svg';
 
 class App extends Component {
@@ -15,6 +17,7 @@ class App extends Component {
   // automatically changed to a constructor
   state = {
     manager: '',
+    currentAccount: [],
     players: [],
     balance: '',
     value: '',
@@ -25,14 +28,16 @@ class App extends Component {
     const manager = await lottery.methods.manager().call();
     const players = await lottery.methods.getPlayers().call();
     const balance = await web3.eth.getBalance(lottery.options.address);
+    const currentAccount = await web3.eth.getAccounts();
 
-    this.setState({ manager, players, balance });
+    this.setState({ manager, players, balance, currentAccount });
   }
 
   onSubmit = async (event) => {
     event.preventDefault();
 
     const accounts = await web3.eth.getAccounts();
+    console.log(accounts);
 
     this.setState({ message: 'Waiting on transaction to complete...' });
 
@@ -44,7 +49,7 @@ class App extends Component {
     this.setState({ message: 'You have been added to the lottery' })
   };
 
-  onWinnerPick = async (event) => {
+  handlePickWinner = async (event) => {
     const accounts = await web3.eth.getAccounts();
 
     this.setState({ message: 'Waiting on winner picking transaction to complete... Good luck!' });
@@ -56,24 +61,8 @@ class App extends Component {
     this.setState({ message: 'A winner has been picked. Check your account to see if you won!' });
   };
 
-  // showPickWinner({ players }) {
-  //   if (!players.length) {
-  //     return null;
-  //   } else {
-  //     return (
-  //       <div>
-  //         <h4>Ready to pick the winner out of {this.state.players.length} Players ?</h4>
-  //         <button onClick={this.onWinnerPick}>Pick the winner</button>
-  //
-  //
-  //         <hr/>
-  //       </div>
-  //
-  //     )
-  //   }
-  // }
-
   render() {
+    const isManager = this.state.currentAccount[0] === this.state.manager;
     return (
       <div>
         <h1>Lottery</h1>
@@ -82,10 +71,10 @@ class App extends Component {
 
         <hr/>
 
-        <div className='ether-box'>
-          <div className='wave one'></div>
-          <div className='wave two'></div>
-          <div className='wave three'></div>
+        <div className="ether-box">
+          <div className="wave one"></div>
+          <div className="wave two"></div>
+          <div className="wave three"></div>
           <div className='title'>
             {web3.utils.fromWei(this.state.balance, 'ether')} ETH
           </div>
@@ -110,13 +99,15 @@ class App extends Component {
 
         <hr/>
 
-        <div>
-          <h4>Ready to pick the winner out of {this.state.players.length} Players ?</h4>
-          <button onClick={this.onWinnerPick}>Pick the winner</button>
+        {
+          isManager && (
+            <PickWinner
+              playersLength={this.state.players.length}
+              onPickWinner={this.handlePickWinner}
+            />
+          )
+        }
 
-
-          <hr/>
-        </div>
 
 
         <h4>{this.state.message}</h4>
