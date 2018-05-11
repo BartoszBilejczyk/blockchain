@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="18267563-f298-408a-9283-c5962460bebd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lottery-react/src/components/PickWinner.js" />
+    <list default="true" id="18267563-f298-408a-9283-c5962460bebd" name="Default" comment="Conditional rendering for pick winner">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lottery-react/src/App.css" afterPath="$PROJECT_DIR$/lottery-react/src/App.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lottery-react/src/App.js" afterPath="$PROJECT_DIR$/lottery-react/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lottery-react/src/App.scss" afterPath="$PROJECT_DIR$/lottery-react/src/App.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -209,7 +205,7 @@
       <workItem from="1525687317646" duration="222000" />
       <workItem from="1525687554692" duration="2676000" />
       <workItem from="1525691156752" duration="5332000" />
-      <workItem from="1525787111562" duration="19382000" />
+      <workItem from="1525787111562" duration="19428000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1525687176870</created>
@@ -274,11 +270,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526035608830</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Conditional rendering for pick winner">
+      <created>1526041712494</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1526041712494</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27992000" />
+    <option name="totallyTimeSpent" value="28038000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1084" y="-1200" width="1920" height="1200" extended-state="0" />
@@ -316,7 +319,8 @@
     <MESSAGE value="Added Lottery contract and tests" />
     <MESSAGE value="Wrote additional assertions" />
     <MESSAGE value="Lottery styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lottery styling" />
+    <MESSAGE value="Conditional rendering for pick winner" />
+    <option name="LAST_COMMIT_MESSAGE" value="Conditional rendering for pick winner" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
