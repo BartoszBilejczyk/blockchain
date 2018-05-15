@@ -1,0 +1,7 @@
+h1 {
+  @include font(60, bold);
+}
+
+h2 {
+  @include font(30, semi);
+}
