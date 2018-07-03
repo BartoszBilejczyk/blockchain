@@ -9,6 +9,10 @@ export default {
   name: 'casino',
   components: {
     HelloMetaMask,
+  },
+  beforeCreate() {
+    console.log('registerWeb3 Action dispatched from Casino Component');
+    this.$store.dispatch('registerWeb3');
   }
 }
 </script>
