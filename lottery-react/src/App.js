@@ -17,7 +17,7 @@ class App extends Component {
   // automatically changed to a constructor
   state = {
     manager: '',
-    currentAccount: [],
+    currentAccounts: [],
     players: [],
     balance: '',
     value: '',
@@ -28,9 +28,9 @@ class App extends Component {
     const manager = await lottery.methods.manager().call();
     const players = await lottery.methods.getPlayers().call();
     const balance = await web3.eth.getBalance(lottery.options.address);
-    const currentAccount = await web3.eth.getAccounts();
+    const currentAccounts = await web3.eth.getAccounts();
 
-    this.setState({ manager, players, balance, currentAccount });
+    this.setState({ manager, players, balance, currentAccounts });
   }
 
   onSubmit = async (event) => {
@@ -62,7 +62,8 @@ class App extends Component {
   };
 
   render() {
-    const isManager = this.state.currentAccount[0] === this.state.manager;
+    const isManager = this.state.currentAccounts[0] === this.state.manager;
+
     return (
       <div>
         <h1>Lottery</h1>
@@ -107,8 +108,6 @@ class App extends Component {
             />
           )
         }
-
-
 
         <h4>{this.state.message}</h4>
       </div>

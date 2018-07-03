@@ -26,6 +26,8 @@ class CampaignNew extends Component {
           // no gas, because MetaMask handles it
           from: accounts[0]
         });
+
+      Router.pushRoute('/')
     } catch (err) {
       this.setState({ errorMessage: err.message })
     }

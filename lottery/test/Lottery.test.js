@@ -1,4 +1,5 @@
 const assert = require('assert');
+// Ganache CLI uses ethereumjs to simulate full client behavior and make developing Ethereum applications faster, easier, and safer. 10 accounts and 100 ether on each by default.
 const ganache = require('ganache-cli');
 const Web3 = require('web3');
 const web3 = new Web3(ganache.provider());
