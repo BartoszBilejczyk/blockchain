@@ -17,8 +17,8 @@ export default new Vuex.Store({
       web3Copy.coinbase = result.coinbase;
       web3Copy.networkId = result.networkId;
       web3Copy.balance = result.balance;
-      web3Copy.isInjected = result.isInjected;
-      web3Copy.web3Instance = result.web3Instance;
+      web3Copy.injectedWeb3 = result.injectedWeb3;
+      web3Copy.web3Instance = result.web3;
       state.web3 = web3Copy;
       pollWeb3();
     },
@@ -43,7 +43,7 @@ export default new Vuex.Store({
       })
     },
     pollWeb3({ commit }, payload) {
-      console.log('pollWeb3 actio being executed');
+      console.log('pollWeb3 action being executed');
       commit('pollWeb3Instance', payload)
     },
     getContractInstance({commit}) {

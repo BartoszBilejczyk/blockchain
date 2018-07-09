@@ -1,6 +1,6 @@
 let state = {
   web3: {
-    isInjected: false,
+    injectedWeb3: false,
     web3Instance: null,
     networkId: null,
     coinbase: null,

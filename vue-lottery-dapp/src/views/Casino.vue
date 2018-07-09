@@ -1,6 +1,4 @@
 <template>
-  <HelloMetaMask />
-
   <div class="casino">
    <h1>Welcome to the Casino</h1>
    <h4>Please pick a number between 1 and 10</h4>
@@ -22,6 +20,8 @@
       Won: {{ winEvent._status }}
       Amount: {{ winEvent._amount }} Wei
     </div>
+
+    <HelloMetaMask />
    </div>
 </template>
 
@@ -57,7 +57,7 @@ export default {
         gas: 300000,
         value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
         from: this.$store.state.web3.coinbase,
-      }, (err, result) => {
+      }, (err) => {
         if (err) {
           console.log(err);
           this.pending = false;
