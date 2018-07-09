@@ -17,8 +17,10 @@
     </ul>
     <img v-if="pending" id="loader" src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif">
     <div class="event" v-if="winEvent">
-      Won: {{ winEvent._status }}
-      Amount: {{ winEvent._amount }} Wei
+      <div class="event" v-if="winEvent">
+         <p v-if="winEvent._status" id="has-won"><i aria-hidden="true" class="fa fa-check"></i> Congratulations, you have won {{ winEvent._amount }} wei</p>
+         <p v-else id="has-lost"><i aria-hidden="true" class="fa fa-check"></i> Sorry you lost, please try again.</p>
+       </div>
     </div>
 
     <HelloMetaMask />
@@ -68,6 +70,7 @@ export default {
               console.log('could not get event Won()')
             } else {
               this.winEvent = result.args;
+              this.winEvent._amount = parseInt(result.args._amount, 10)
               this.pending = false;
             }
           })
@@ -120,6 +123,14 @@ li:active{
 
 * {
   color: #444444;
+}
+
+#has-won {
+  color: green;
+}
+
+#has-lost {
+  color:red;
 }
 
 </style>
