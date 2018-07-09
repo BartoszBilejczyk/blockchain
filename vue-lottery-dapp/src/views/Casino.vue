@@ -1,8 +1,19 @@
 <template>
   <div class="casino">
-   <h1>Welcome to the Casino</h1>
-   <h4>Please pick a number between 1 and 10</h4>
-     Amount to bet: <input v-model="amount" placeholder="0 Ether">
+     <h1>Welcome to the Casino</h1>
+     <div class="form__item-wrapper">
+       <label for="amount">
+         Amount to bet:
+       </label>
+       <div class="input-wrapper">
+         <input
+           v-model="amount"
+           id="amount"
+           placeholder="0 Ether"
+         >
+       </div>
+     </div>
+     <h4>Please pick a number between 1 and 10</h4>
      <ul>
        <li v-on:click="clickNumber">1</li>
        <li v-on:click="clickNumber">2</li>
@@ -17,14 +28,11 @@
     </ul>
     <img v-if="pending" id="loader" src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif">
     <div class="event" v-if="winEvent">
-      <div class="event" v-if="winEvent">
-         <p v-if="winEvent._status" id="has-won"><i aria-hidden="true" class="fa fa-check"></i> Congratulations, you have won {{ winEvent._amount }} wei</p>
-         <p v-else id="has-lost"><i aria-hidden="true" class="fa fa-check"></i> Sorry you lost, please try again.</p>
-       </div>
+      <p v-if="winEvent._status" id="has-won"><i aria-hidden="true" class="fa fa-check"></i> Congratulations, you have won {{ winEvent._amount }} wei.</p>
+      <p v-else id="has-lost"><i aria-hidden="true" class="fa fa-check"></i> You lost. Try again.</p>
     </div>
-
     <HelloMetaMask />
-   </div>
+  </div>
 </template>
 
 <script>
@@ -88,36 +96,87 @@ export default {
 }
 
 #loader {
-  width:150px;
+  width: 150px;
+}
+
+.form__item-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 50px 0;
+}
+
+label {
+  margin-bottom: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.input-wrapper {
+  position: relative;
+
+  &:after {
+    content: 'ETH';
+    position: absolute;
+    display: block;
+    right: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: #9174dd;
+    padding: 14px;
+    border-radius: 0 10px 10px 0;
+  }
+}
+
+input {
+  padding: 15px 50px 15px 20px;;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #9174dd;
+  border-radius: 10px;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 ul {
-  margin: 25px;
+  margin-top: 20px;
+  padding-left: 0;
   list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-column-gap:25px;
-  grid-row-gap:25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-li{
+li {
   padding: 20px;
-  margin-right: 5px;
+  margin: 10px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   cursor: pointer;
-  background-color:#fff;
-  border: -2px solid #bf0d9b;
-  color: #bf0d9b;
-  box-shadow:3px 5px #bf0d9b;
+  background: #fff;
+  border: 2px solid;
+  border-color: #9174dd;
+  color: #9174dd;
+  transition: all .2s ease;
+  font-weight: 500;
+  font-size: 20px;
 }
 
-li:hover{
-  background-color:#bf0d9b;
-  color:white;
-  box-shadow:0px 0px #bf0d9b;
+li:hover {
+  border: 2px solid;
+  background: #9174dd;
+  border-color: #9174dd;
+  color: white;
 }
 
-li:active{
+li:active {
   opacity: 0.7;
 }
 
@@ -125,12 +184,18 @@ li:active{
   color: #444444;
 }
 
+#has-won,
+#has-lost {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 #has-won {
-  color: green;
+  color: #9174dd;
 }
 
 #has-lost {
-  color:red;
+  color: #d454a9;
 }
 
 </style>

@@ -24,7 +24,13 @@
 
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+    max-width: 90%;
+  }
+}
+
+@media (min-width: 1366px) {
+  .container {
+    max-width: 70%;
   }
 }
 </style>

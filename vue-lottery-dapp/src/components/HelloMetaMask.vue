@@ -1,10 +1,20 @@
 <template lang="html">
   <div class='metamask-info'>
-    <p v-if="injectedWeb3" id="has-metamask"><i aria-hidden="true" class="fa fa-check"></i> Metamask installed</p>
-    <p v-else id="no-metamask"><i aria-hidden="true" class="fa fa-times"></i> Metamask not found</p>
-    <p>Network: {{ network }}</p>
-    <p>Account: {{ coinbase }}</p>
-    <p>Balance: {{ balance }} Wei // {{ ethBalance }} Eth</p>
+    <div class="box" v-if="injectedWeb3">
+      <p><i aria-hidden="true" class="fa fa-check"></i><b class="title">METAMASK:</b> Metamask installed</p>
+    </div>
+    <div class="box" v-else>
+      <p><i aria-hidden="true" class="fa fa-times"></i><b class="title">METAMASK:</b> Metamask not found</p>
+    </div>
+    <div class="box">
+      <p><b class="title">NETWORK:</b> {{ network }}</p>
+    </div>
+    <div class="box">
+      <p><b class="title">ACCOUNT:</b> {{ coinbase }}</p>
+    </div>
+    <div class="box">
+      <p><b class="title">BALANCE:</b> {{ ethBalance }} <b>ETH</b></p>
+    </div>
   </div>
 </template>
 
@@ -29,14 +39,34 @@ export default {
 <style lang="scss" scoped>
 
 .metamask-info {
-  text-align: center;
+  margin-top: 100px;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-#has-metamask {
-  color: green;
-}
+.box {
+  display: flex;
+  padding: 20px;
+  margin: 10px;
+  background: linear-gradient(135deg, #d454a9, #9174dd);
+  font-size: 20px;
+  width: calc(25% - 60px);
+  min-width: 200px;
+  height: 200px;
+  color: white;
+  word-wrap: break-word;
+  border-radius: 15px;
 
-#no-metamask {
-  color: red;
+  p {
+    width: 100%;
+  }
+
+  .title {
+    display: block;
+    font-size: 25px;
+    height: 70px;
+  }
 }
 </style>
