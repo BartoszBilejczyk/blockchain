@@ -4,9 +4,14 @@
      <p>
        You can win up to {{ contractBalance }} ETH with a multiplier of 9.
      </p>
+
+    <div class="metamask-error" v-if="metamaskError">
+      You need to log in to Metamask and reload the app <br> in order to use the casino.
+    </div>
+
      <div class="form__item-wrapper">
        <label for="amount">
-         Amount to bet (100 wei, max {{ contractBalance / 10 }} ETH):
+         Amount to bet (min 100 wei, max {{ contractBalance / 10 }} ETH):
        </label>
        <div class="input-wrapper">
          <input
@@ -65,33 +70,39 @@ export default {
   },
   computed: mapState({
     contractBalance: state => state.web3.contractBalance,
+    injectedWeb3: state => state.web3.injectedWeb3,
+    metamaskError: state => !state.web3.injectedWeb3,
   }),
   methods: {
     selectNumber(event) {
-      console.log(event.target.innerHTML, this.amount);
-      this.winEvent = null;
-      this.pending = true;
-      this.$store.state.contractInstance().bet(event.target.innerHTML, {
-        gas: 300000,
-        value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
-        from: this.$store.state.web3.coinbase,
-      }, (err) => {
-        if (err) {
-          console.log(err);
-          this.pending = false;
-        } else {
-          let Won = this.$store.state.contractInstance().Won()
-          Won.watch((err, result) => {
-            if (err) {
-              console.log('could not get event Won()')
-            } else {
-              this.winEvent = result.args;
-              this.winEvent._amount = parseInt(result.args._amount, 10)
-              this.pending = false;
-            }
-          })
-        }
-      })
+      if (this.injectedWeb3) {
+        this.metamaskError = false;
+        this.winEvent = null;
+        this.pending = true;
+        this.$store.state.contractInstance().bet(event.target.innerHTML, {
+          gas: 300000,
+          value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
+          from: this.$store.state.web3.coinbase,
+        }, (err) => {
+          if (err) {
+            console.log(err);
+            this.pending = false;
+          } else {
+            let Won = this.$store.state.contractInstance().Won()
+            Won.watch((err, result) => {
+              if (err) {
+                console.log('could not get event Won()')
+              } else {
+                this.winEvent = result.args;
+                this.winEvent._amount = parseInt(result.args._amount, 10)
+                this.pending = false;
+              }
+            })
+          }
+        })
+      } else {
+        this.metamaskError = true;
+      }
     }
   }
 }
@@ -113,6 +124,17 @@ export default {
   align-items: center;
   justify-content: flex-start;
   margin: 50px 0;
+}
+
+.metamask-error {
+  padding: 20px;
+  border: 1px solid red;
+  background: red;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 label {
