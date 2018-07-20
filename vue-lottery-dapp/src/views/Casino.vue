@@ -1,9 +1,12 @@
 <template>
   <div class="casino">
      <h1>Welcome to the Casino</h1>
+     <p>
+       You can win up to {{ contractBalance }} ETH with a multiplier of 9.
+     </p>
      <div class="form__item-wrapper">
        <label for="amount">
-         Amount to bet (minimum 100 wei):
+         Amount to bet (100 wei, max {{ contractBalance / 10 }} ETH):
        </label>
        <div class="input-wrapper">
          <input
@@ -15,16 +18,16 @@
      </div>
      <h4>Please pick a number between 1 and 10</h4>
      <ul>
-       <li v-on:click="clickNumber">1</li>
-       <li v-on:click="clickNumber">2</li>
-       <li v-on:click="clickNumber">3</li>
-       <li v-on:click="clickNumber">4</li>
-       <li v-on:click="clickNumber">5</li>
-       <li v-on:click="clickNumber">6</li>
-       <li v-on:click="clickNumber">7</li>
-       <li v-on:click="clickNumber">8</li>
-       <li v-on:click="clickNumber">9</li>
-       <li v-on:click="clickNumber">10</li>
+       <li v-on:click="selectNumber">1</li>
+       <li v-on:click="selectNumber">2</li>
+       <li v-on:click="selectNumber">3</li>
+       <li v-on:click="selectNumber">4</li>
+       <li v-on:click="selectNumber">5</li>
+       <li v-on:click="selectNumber">6</li>
+       <li v-on:click="selectNumber">7</li>
+       <li v-on:click="selectNumber">8</li>
+       <li v-on:click="selectNumber">9</li>
+       <li v-on:click="selectNumber">10</li>
     </ul>
     <img v-if="pending" id="loader" src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif">
     <div class="event" v-if="winEvent">
@@ -38,6 +41,8 @@
 <script>
 // @ is an alias to /src
 import HelloMetaMask from '@/components/HelloMetaMask'
+import { mapState } from 'vuex'
+
 export default {
   name: 'casino',
   components: {
@@ -58,8 +63,11 @@ export default {
     console.log('dispatching getContractInstance');
     this.$store.dispatch('getContractInstance');
   },
+  computed: mapState({
+    contractBalance: state => state.web3.contractBalance,
+  }),
   methods: {
-    clickNumber(event) {
+    selectNumber(event) {
       console.log(event.target.innerHTML, this.amount);
       this.winEvent = null;
       this.pending = true;

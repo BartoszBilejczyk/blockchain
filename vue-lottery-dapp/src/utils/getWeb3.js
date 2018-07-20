@@ -55,7 +55,7 @@ let getWeb3 = new Promise((resolve, reject) => {
   })
   .then(result => {
     return new Promise((resolve, reject) => {
-      // Retrieve balance for coinbase
+
       result.web3().eth.getBalance(result.coinbase, (err, balance) => {
         if (err) {
           reject(new Error('Unable to retrieve balance for address: ' + result.coinbase));
@@ -64,6 +64,23 @@ let getWeb3 = new Promise((resolve, reject) => {
           resolve(result);
         }
       })
+    })
+  })
+  .then(result => {
+    return new Promise((resolve, reject) => {
+      // Retrieve balance for contract
+      result.web3().eth.getBalance('0x3fecb15638ec8687fadf3d44b2d9bd675438dc8e', (err, contractBalance) => {
+        if (err) {
+          reject(new Error('Unable to retrieve balance for contract: 0x3fecb15638ec8687fadf3d44b2d9bd675438dc8e'));
+        } else {
+          const contractBalanceParsed = contractBalance.c[0] / 10000;
+          console.log(contractBalanceParsed)
+          result = Object.assign({}, result, {
+            contractBalance: contractBalanceParsed
+          });
+          resolve(result);
+        }
+      });
     })
   });
 

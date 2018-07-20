@@ -17,6 +17,7 @@ export default new Vuex.Store({
       web3Copy.coinbase = result.coinbase;
       web3Copy.networkId = result.networkId;
       web3Copy.balance = result.balance;
+      web3Copy.contractBalance = result.contractBalance;
       web3Copy.injectedWeb3 = result.injectedWeb3;
       web3Copy.web3Instance = result.web3;
       state.web3 = web3Copy;

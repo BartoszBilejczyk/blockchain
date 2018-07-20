@@ -6,6 +6,7 @@ let state = {
     coinbase: null,
     balance: null,
     error: null,
+    contractBalance: null,
   },
   contractInstance: null,
 }

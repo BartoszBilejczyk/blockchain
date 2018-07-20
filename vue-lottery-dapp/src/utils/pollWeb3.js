@@ -20,7 +20,7 @@ let pollWeb3 = () => {
           }
         })
       } else {
-        web3.eth.getBalance(store.state.web3.coinbase, (err,polledBalance) => {
+        web3.eth.getBalance(store.state.web3.coinbase, (err, polledBalance) => {
           if (err) {
             console.log(err);
           } else if (parseInt(polledBalance, 10) !== store.state.web3.balance) {
