@@ -3,7 +3,7 @@
      <h1>Welcome to the Casino</h1>
      <div class="form__item-wrapper">
        <label for="amount">
-         Amount to bet:
+         Amount to bet (minimum 100 wei):
        </label>
        <div class="input-wrapper">
          <input
